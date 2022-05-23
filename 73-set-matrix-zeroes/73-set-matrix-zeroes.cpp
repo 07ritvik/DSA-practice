@@ -9,9 +9,10 @@ public:
             for(int j=0;j<n;j++){
                 if(matrix[i][j]==0){
                     for(int k=0;k<m;k++){
-                        for(int l=0;l<n;l++){
-                            if(k==i || l==j) ans[k][l]=0;
-                        }
+                        ans[k][j]=0;
+                    }
+                    for(int l=0;l<n;l++){
+                        ans[i][l]=0;
                     }
                 }
             }
