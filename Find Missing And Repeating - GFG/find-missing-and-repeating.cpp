@@ -18,11 +18,11 @@ public:
         sum+=arr[n-1];
         int miss=1;
         for(int i=0;i<n;i++){
-            if(arr[i]>0){
+            
                 if(miss==arr[i]){
                     miss++;
                 }
-            } 
+            
         }
         k[1]=miss;
         return k;
