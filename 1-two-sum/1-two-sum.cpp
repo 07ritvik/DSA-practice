@@ -42,8 +42,8 @@ public:
 
    	 if (mp.find(target - nums[i]) != mp.end()) {
 
-   		 res.emplace_back(i);
-   		 res.emplace_back(mp[target - nums[i]]);
+   		 res.push_back(i);
+   		 res.push_back(mp[target - nums[i]]);
    		 return res;
    	 }
 
