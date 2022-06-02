@@ -16,7 +16,7 @@ public:
                         v.push_back(nums[j]);
                         v.push_back(nums[left]);
                         v.push_back(nums[right]);
-                        sort(v.begin(),v.end());
+                        // sort(v.begin(),v.end());
                         ans.push_back(v);
                         
                         while(left<right && nums[left]==v[2]) left++;
