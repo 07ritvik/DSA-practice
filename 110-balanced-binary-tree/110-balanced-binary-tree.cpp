@@ -17,12 +17,27 @@ public:
         int h2=height(root->right);
         return max(h1,h2)+1;
     }
+    pair<bool,int> fast(TreeNode* root){
+        if(root==NULL){
+            pair<bool,int> p={true,0};
+            return p;
+        }
+        pair<bool,int> left=fast(root->left);
+        pair<bool,int> right=fast(root->right);
+        
+        bool leftAns=left.first;
+        bool rightAns=right.first;
+        bool diff=abs(left.second-right.second)<=1;
+        
+        pair<bool,int> ans;
+        ans.second=max(left.second,right.second)+1;
+        
+        if(leftAns&&rightAns&&diff)  ans.first=true;
+        else ans.first=false;
+        
+        return ans;
+    }
     bool isBalanced(TreeNode* root) {
-        if(root==NULL) return true;
-        bool left=isBalanced(root->left);
-        bool right=isBalanced(root->right);
-        bool diff=abs(height(root->left)-height(root->right))<=1;
-        if(left&&right&&diff) return true;
-        return false;
+        return fast(root).first;
     }
 };
