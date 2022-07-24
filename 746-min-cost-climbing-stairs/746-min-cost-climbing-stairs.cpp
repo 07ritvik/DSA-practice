@@ -1,16 +1,15 @@
 class Solution {
 public:
-    int dp[1000];
-    int solve(int i,vector<int>& cost){
-        int ans=0;
-        if(i+1==cost.size()) return cost[i];
-        if(i+2==cost.size()) return cost[i];
-        if(dp[i]!=-1) return dp[i];
-        ans= cost[i]+min(solve(i+1,cost),solve(i+2,cost));
-        return dp[i]=ans;
+    int solve(vector<int>& cost,int n,vector<int> &dp){
+        if(n==1) return cost[1];
+        if(n==0) return cost[0];
+        if(dp[n]!=-1) return dp[n];
+        return dp[n]=cost[n]+min(solve(cost,n-1,dp),solve(cost,n-2,dp));
     }
+    
     int minCostClimbingStairs(vector<int>& cost) {
-        memset(dp,-1,sizeof dp);
-        return min(solve(0,cost),solve(1,cost));
+        int n=cost.size();
+        vector<int> dp(n+1,-1);
+        return min(solve(cost,n-1,dp),solve(cost,n-2,dp));
     }
 };
