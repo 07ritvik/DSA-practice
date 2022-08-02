@@ -10,8 +10,7 @@ public:
                end=intervals[i][1];
            }
             else if(intervals[i][0]>=start && intervals[i][1]<=end){
-                start=start;
-                end=end;
+                continue;
             }
             else{
                 ans.push_back({start,end});
