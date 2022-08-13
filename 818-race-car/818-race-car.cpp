@@ -31,7 +31,7 @@ public:
                 // accelerate instruction
                 int new_pos = pos+speed;
                 int new_speed = speed*2;
-                if(vis.find(to_string(new_pos)+" "+to_string(new_speed)) == vis.end() and isValid(new_pos,target))
+                if(vis.find(to_string(new_pos)+" "+to_string(new_speed)) == vis.end() and abs(target-new_pos)<target)
                 {
                     q.push({new_pos, new_speed});
                     vis.insert(to_string(new_pos)+" "+to_string(new_speed));
@@ -40,7 +40,7 @@ public:
                 // reverse instruction
                 new_pos = pos;
                 new_speed = (speed > 0) ? -1 : 1;
-                if(vis.find(to_string(new_pos)+" "+to_string(new_speed)) == vis.end() and isValid(new_pos,target))
+                if(vis.find(to_string(new_pos)+" "+to_string(new_speed)) == vis.end() and abs(target-new_pos)<target)
                 {
                     q.push({new_pos, new_speed});
                     vis.insert(to_string(new_pos)+" "+to_string(new_speed));
