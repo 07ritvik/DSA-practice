@@ -1,37 +1,27 @@
 class Solution {
 public:
-    string longestPalindrome(string s)
-    {
-        int n = s.size();
-        if (n == 0)
-            return "";
-
-        bool dp[n][n];
-
-
-        memset(dp, 0, sizeof(dp));
-
-        for (int i = 0; i < n; i++)
-            dp[i][i] = true;
-
-        string ans = "";
-        ans += s[0];
-
-        for (int i = n - 1; i >= 0; i--)
-        {
-            for (int j = i ; j < n; j++)
+    string longestPalindrome(string s) {
+        int n=s.size();
+        if(n==0 || n==1) return s;
+        int l=1;
+        string str="";
+        str+=s[0];
+        for(int i=0;i<n;i++){
+            int x=i-1, y =i+1;
+            while(x>=0 && s[x]==s[i]) x--;
+            while(y<n && s[y]==s[i]) y++;
+            while(x>=0 && y<n && s[x]==s[y])
             {
-                if (s[i] == s[j])
-                {
-                    if (j - i == 0 ||j - i == 1 || dp[i + 1][j - 1])
-                    {     
-                        dp[i][j] = true;
-                        if (ans.size() < j - i + 1)
-                            ans = s.substr(i, j - i + 1);
-                    }
-                }
+                x--;
+                y++;
             }
+            if(l<y-x-1){
+                l=y-x-1;
+                str=s.substr(x+1,l);
+            }
+            
+            
         }
-        return ans;
+        return str;
     }
 };
