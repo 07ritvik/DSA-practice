@@ -30,7 +30,7 @@ public:
             cnt++;
         }
         if(currptr!=NULL){
-            head->next=reverseKGroup(nextptr,k);
+            head->next=reverseKGroup(currptr,k);
         }
         return prevptr;
         // if(head==NULL || head->next==NULL) return head;
