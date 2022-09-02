@@ -4,21 +4,20 @@ public:
         sort(intervals.begin(),intervals.end());
         int n=intervals.size();
         vector<vector<int>> ans;
-        int start=intervals[0][0],end=intervals[0][1];
-        for(int i=1;i<n;i++){
-           if(intervals[i][0]<=end && intervals[i][1]>=end){
-               end=intervals[i][1];
-           }
-            else if(intervals[i][0]>=start && intervals[i][1]<=end){
-                continue;
+        vector<int> interval;
+        interval=intervals[0];
+        
+        for(auto it:intervals){
+            if(it[0]>interval[1]){
+                
+                ans.push_back(interval);
+                interval=it;
             }
             else{
-                ans.push_back({start,end});
-                start=intervals[i][0];
-                end=intervals[i][1];
+                interval[1]=max(it[1],interval[1]);
             }
         }
-        ans.push_back({start,end});
+        ans.push_back(interval);
         return ans;
     }
 };
